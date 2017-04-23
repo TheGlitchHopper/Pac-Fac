@@ -1,0 +1,26 @@
+.title
+{
+    width:40%;
+    padding-left:23%;
+    
+}
+body {
+    background-image:    url(media/bg.jpg);
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;              /* optional, center the image */
+}
+.box
+{
+    background: black;
+    width:80%;
+    height:80%;
+    margin-left:9%;
+    border: 5px solid #c54614;
+}
+.warning
+{
+    width:30%;
+    margin-left:33%;
+    margin-top:8%;
+}
