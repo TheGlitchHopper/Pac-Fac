@@ -12,11 +12,10 @@ body {
 }
 .box
 {
-	float: left;
     background: black;
     width:80%;
     height:80%;
-   -- margin-left:9%;
+    margin-left:9%;
     border: 5px solid #c54614;
 }
 .warning
@@ -25,24 +24,9 @@ body {
     margin-left:33%;
     margin-top:8%;
 }
-marquee
+.text
 {
-    height:80%;
-}
-.fg
-{
-	float: left;
-	width=10%;
-}
-.f1
-{
-	float: left;
-	width:70%;
-}
-.botg
-{
-	position: relative;
-	left:0%;
-	clear: left;
-	width:auto;
+    color: white;
+    font-size:170%;
+    text-align:center;
 }
