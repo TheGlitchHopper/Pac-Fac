@@ -17,7 +17,7 @@ var maze2 = [
 var maze = [
 [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 [1,1,1,5,0,0,1,0,1,0,0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,1,1,1],
-[1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1],
+[1,1,1,0,1,0,1,0,1,0,1,0,1,0,0,0,0,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1],
 [1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1],
 [1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1],
 [0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0],
@@ -26,7 +26,7 @@ var maze = [
 [1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
 [1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
 [1,1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
-[0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0],
+[0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0],
 [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
 [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ];
@@ -50,7 +50,7 @@ var maze4 = [
 [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 [1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1],
 [1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1],
-[1,1,1,0,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,1,1,0,0,0,0,1,1],
+[1,1,1,5,1,1,1,1,1,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,1,1,0,0,0,0,1,1],
 [1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,0,1,1,1,0,0,0,0,1,1,0,0,1],
 [1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,0,1,1,1,0,1,1,0,1,1,1,0,1],
 [0,0,0,0,0,1,1,1,0,0,1,1,0,1,1,1,1,1,1,0,1,1,1,0,1,1,0,1,1,1,0,0],
@@ -83,10 +83,12 @@ var pos = {};
 pos.x = 3;
 pos.y = 1;
 
+var count = 0;
 
 var g1_pos = {};
 g1_pos.x = 21;
 g1_pos.y = 5;
+
 var g2_pos = {};
 g2_pos.x = 5;
 g2_pos.y = 1;
@@ -115,6 +117,7 @@ function sleep (time) {
 function maze_generate(){  
   mydiv = document.createElement('div');
   mydiv.setAttribute('id', 'mydiv');
+  if(count == 160) alert("Congratulations. You won!");
   	for(i=0;i<14;i++){
           mytr = document.createElement('tr');
   		for(j=0;j<32;j++){
@@ -170,93 +173,74 @@ document.addEventListener("keydown",move);
 	e = e || window.event;
     keycode = e.which || e.keyCode;
     g_move();
+    console.log(count);
     switch(keycode){
         
         case 65: //left
-			while(maze[pos.y][pos.x-1] != 1 || pos.x == 0){
-				if(pos.x > 0){
+			while((maze[pos.y][pos.x-1] == 0 || maze[pos.y][pos.x-1] == 2)&& keycode == 65){
 				  if(maze[pos.y][pos.x-1] != 1){
+				  	if(maze[pos.y][pos.x-1] == 0)
+				  		count+=1;
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y][pos.x-1] = 5;
 					pos.x -= 1;
 					await sleep(150);
 				  }
-				}
-				else if(pos.x == 0){
-				  maze[pos.y][pos.x] = 2;
-				  pos.x = 31;
-				  maze[pos.y][pos.x] = 5;
-				  await sleep(150);
-				}
+    			  if(count == 164) alert("We have a winner!");
 				  mydiv.parentNode.removeChild(mydiv);
 				  maze_generate();
 			}
 			break;
         
         case 87: //up
-			while(pos.y == 0 || maze[pos.y-1][pos.x] != 1){
-				if(pos.y > 0){
+			while((maze[pos.y-1][pos.x] == 0 || maze[pos.y-1][pos.x] == 2)&& keycode == 87){
+				
 				  if(maze[pos.y-1][pos.x] != 1){
+				  	if(maze[pos.y-1][pos.x] == 0)
+				  		count+=1;
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y-1][pos.x] = 5;
 					pos.y -= 1;
 					await sleep(150);
 				  }
-				}
-				else if(pos.y == 0){
-				  maze[pos.y][pos.x] = 2;
-				  pos.y = 13;
-				  maze[pos.y][pos.x] = 5;
-				  await sleep(150);
-				}
+				  if(count == 164) alert("We have a winner!");
 			 	  mydiv.parentNode.removeChild(mydiv);
 			  	  maze_generate();
 			}
           break;
         
         case 68: //right
-			while(maze[pos.y][pos.x+1] != 1 || pos.x == 31){
-				if(pos.x < 31){
+			while((maze[pos.y][pos.x+1] == 0 || maze[pos.y][pos.x+1] == 2)&& keycode == 68){
+				
 				  if(maze[pos.y][pos.x+1] != 1){
+				  	if(maze[pos.y][pos.x+1] == 0)
+				  		count+=1;
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y][pos.x+1] = 5;		
 					pos.x += 1;
 					await sleep(150);
 				  }
-			}
-		
-		
-				else if(pos.x == 31){
-				  maze[pos.y][pos.x] = 2;
-				  pos.x = 0;
-				  maze[pos.y][pos.x] = 5;
-				  await sleep(150);
-				}
-			  mydiv.parentNode.removeChild(mydiv);
-			  maze_generate();
+			      if(count == 164) alert("We have a winner!");
+				  mydiv.parentNode.removeChild(mydiv);
+				  maze_generate();
 		}
 		
           break;
         
         case 83: //down
-			while(maze[pos.y+1][pos.x] != 1 || pos.y == 13){
-				if(pos.y < 13){
+			while((maze[pos.y+1][pos.x] == 0 || maze[pos.y+1][pos.x] == 2)&& keycode == 83){
+				
 				  if(maze[pos.y+1][pos.x] != 1){
+				  	if(maze[pos.y+1][pos.x] == 0)
+				  		count+=1;
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y+1][pos.x] = 5;
 					pos.y += 1;
 					await sleep(150);
 				  }
-				}
-				if(pos.y == 13){
-				  maze[pos.y][pos.x] = 2;
-				  pos.y = 0;
-				  maze[pos.y][pos.x] = 5;
-				  await sleep(150);
-				}
-			
-	          mydiv.parentNode.removeChild(mydiv);
-	          maze_generate();
+				  if(count == 164) alert("We have a winner!");
+		          mydiv.parentNode.removeChild(mydiv);
+		          maze_generate();
 			}
 		break; 		 
 	}
