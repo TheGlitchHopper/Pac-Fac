@@ -3,21 +3,29 @@
 <body>
 <div><img class="charselect1" src="media/charselect1.png"/></div>
 <div>
-	<img class="avatarselect" src="media/w1.png"/>
-	<img class="avatarselect" src="media/w2.png"/>
-	<img class="avatarselect" src="media/w3.png"/>
-	<img class="avatarselect" src="media/w4.png"/>
-	<img class="avatarselect" src="media/w5.png"/>
+	<a href="gameitself.html"><img class="avatarselect" onclick="w1fct()" src="media/w1.png"/></a>
+	<a href="gameitself.html"><img class="avatarselect" onclick="w2fct()" src="media/w2.png"/></a>
+	<a href="gameitself.html"><img class="avatarselect" onclick="w3fct()" src="media/w3.png"/></a>
+	<a href="gameitself.html"><img class="avatarselect" onclick="w4fct()" src="media/w4.png"/></a>
+	<a href="gameitself.html"><img class="avatarselect" onclick="w5fct()" src="media/w5.png"/></a>
 </div>
 <div style="margin-top:7%">
 	<p class="charselecttext" style="margin-left:22%">Or , you can use your facebook profile pic as your avatar by entering your user ID</p>
 	<p class="charselecttext" style="margin-left:28%"><a style="text-decoration:none;color:white" href="https://findmyfbid.com/" target="_blank">To find out your user ID check this link : https://findmyfbid.com/</a></p>
 	<form action="/action_page.php">
-		<input type="text" name="facebookID" style="margin-left:37%;width:25%;height:4%"><br>
-	<input type="submit" value="Submit" style="margin-left:45%;width:10%;height:4%;margin-top:1%">
+		<input id="text" type="text" name="facebookID" style="margin-left:37%;width:25%;height:4%"><br>
+		<input type="button" value="Submit" onclick="fbfct();location.href='gameitself.html';" style="margin-left:45%;width:10%;height:4%;margin-top:1%">
 	</form>
 </div>
 <!--<div><img src="http://graph.facebook.com/100010138862102/picture?type=square"/></div>-->
 <a href="temporary.html"><img src="media/back.png" style="width:5%;margin-left:3%"></a>
+<script>
+function w1fct() {var avatar = "media/w1.png";localStorage.setItem("avatar", avatar);}
+function w2fct() {var avatar = "media/w2.png";localStorage.setItem("avatar", avatar);}
+function w3fct() {var avatar = "media/w3.png";localStorage.setItem("avatar", avatar);}
+function w4fct() {var avatar = "media/w4.png";localStorage.setItem("avatar", avatar);}
+function w5fct() {var avatar = "media/w5.png";localStorage.setItem("avatar", avatar);}
+function fbfct() {var avatar = "http://graph.facebook.com/" + document.getElementById("text").value + "/picture?type=square";localStorage.setItem("avatar", avatar);}
+</script>
 </body>
 </html>
