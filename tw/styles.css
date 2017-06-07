@@ -62,6 +62,7 @@ marquee
     width:18%;
     height:10%;
     margin-left:3%;
+	margin-top:15%;
     font-size:2vw;
     font-family:"Comic Sans Ms";
     border-radius:30%;
@@ -74,24 +75,28 @@ marquee
     margin-left:20%;
     margin-top:3%;
 }
-.footertext
+/*.footertext
 {
     color: white;
     font-size:1.5vw;
     margin-left:76%;
     float:left;
     margin-top:5%;
-}
+}*/
 .backbutton
 {
-    width:25%;
-    height:10%;
-    margin-top:7%;
-    margin-left:36%;
+    width:20%;
+    height:7%;
+    margin-top:5%;
+    margin-left:38%;
     font-size:1.4vw;
     font-family:"Comic Sans Ms";
-    border-radius:30%;
+    border-radius:45%;
     cursor:pointer;
+	background-color:black;
+	color:red;
+	border-color:white;
+	border-width:0.3vw;
     
 }
 .devil
@@ -112,6 +117,7 @@ marquee
 }
 body {
 	font-family: sans-serif;
+	background-color:black;
 }
 
 .game {
@@ -156,4 +162,34 @@ body {
     width:20%;
     top:10%;
     left:76%;
+}
+.play{
+	width:80%;
+	margin-left:9%;
+	margin-top:13%;
+}
+.charselect1{
+	width:70%;
+	margin-top:3%;
+	margin-left:15%;
+}
+.avatarselect{
+	width:10%;
+	margin-left:8%;
+	margin-top:5%;
+	cursor:pointer;
+}
+.charselecttext{
+	font-size:1.5vw;
+	color:white;
+}
+.score{
+	width:50%;
+	margin-left:22%;
+	margin-top:3%
+}
+.highscore{
+	width:80%;
+	margin-left:9%;
+	margin-top:3%
 }

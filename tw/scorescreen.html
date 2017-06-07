@@ -1,0 +1,18 @@
+<html>
+<link rel="stylesheet" href="styles.css">
+<body>
+<audio autoplay="true" loop="true">
+	<source src="media/score.mp3" type="audio/mpeg">
+</audio>
+<div><img class="highscore" src="media/highscore.gif"/></div>
+<div style="margin-top:5%;margin-left:38%;font-size:2.5vw;color:white">Highscore : 200</div>
+<div style="margin-top:5%;margin-left:38%;font-size:2.5vw;color:white">Your score : 200</div>
+<a href="temporary.html"><img src="media/back.png" style="width:5%;margin-left:2%;margin-top:10%"></a>
+<script>
+function takescore(){
+	Scanner scanner = new Scanner(new File("score.txt"));
+	int i = scanner.nextInt();
+}
+</script>
+</body>
+</html>
