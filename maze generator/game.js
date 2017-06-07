@@ -2,7 +2,7 @@ var maze2 = [
 [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 [1,1,1,5,0,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 [1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
+[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,1,1,1,1],
 [1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
 [1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
 [1,1,1,0,0,0,0,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
@@ -11,16 +11,16 @@ var maze2 = [
 [1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
 [1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
 [1,1,1,0,1,0,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
-[1,1,1,0,0,0,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
+[1,1,1,0,0,0,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,4,1,1,1,1],
 [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 var maze = [
-[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-[1,1,1,5,0,0,1,1,1,0,0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,1,1,1],
-[1,1,1,0,1,0,1,1,1,0,1,0,1,0,1,1,0,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1],
+[1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+[1,1,1,5,0,0,1,0,1,0,0,0,0,0,1,1,0,0,0,1,1,1,0,0,0,0,0,0,0,1,1,1],
+[1,1,1,0,1,0,1,0,1,0,1,0,1,0,1,1,0,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1],
 [1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1],
 [1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1],
-[0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0],
 [1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 [1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
 [1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
@@ -28,7 +28,7 @@ var maze = [
 [1,1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
 [0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,0,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0],
 [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
-[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+[1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 var maze3 = [
 [1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -83,14 +83,33 @@ var pos = {};
 pos.x = 3;
 pos.y = 1;
 
-var posv = {};
-pos.xv = 0;
-pos.yv = 0;
+
+var g1_pos = {};
+g1_pos.x = 21;
+g1_pos.y = 5;
+var g2_pos = {};
+g2_pos.x = 5;
+g2_pos.y = 1;
 
 var pacman;
 pacman = document.createElement('img');
 pacman.setAttribute('id','pacman');
 pacman.setAttribute('src', 'https://forum.infinitymu.net/images/smilies/insania/pacman.png');
+
+async function g_move(){
+	if(maze[g1_pos.y][g1_pos.x-1] == 0){
+		maze[g1_pos.y][g1_pos.x] = 0;
+		maze[g1_pos.y][g1_pos.x-1] = 4;
+		g1_pos.x -= 1;
+		await sleep(150);
+		console.log(maze[g1_pos.y][g1_pos.x-1]);
+	}
+}
+
+
+function sleep (time) {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 
 
 function maze_generate(){  
@@ -102,7 +121,7 @@ function maze_generate(){
               if(maze[i][j] == "1"){
                   var mytd = document.createElement('td');
           			var square = document.createElement('img');
-                      square.setAttribute('src', 'http://www.dadabhagwan.org/images/nav-icon.png');
+                      square.setAttribute('src', 'wall.png');
                       square.setAttribute('id', String(i).concat(String(j)));
                       mytd.appendChild(square); 
                       mytr.appendChild(mytd); 
@@ -115,15 +134,24 @@ function maze_generate(){
               else if(maze[i][j] == "0"){
                    var mytd = document.createElement('td');
                       var square = document.createElement('img');
-                      square.setAttribute('src', 'http://www.kidspot.com.au/bundles/nlmkidspot/images/social_pinterest.png');
+                      square.setAttribute('src', 'dot.png');
                       square.setAttribute('id', String(i).concat(String(j)));
+                      square.setAttribute('width', '60%');
                       mytd.appendChild(square); 
                       mytr.appendChild(mytd); 
               }
               else if(maze[i][j] == "2"){
                    var mytd = document.createElement('td');
                       var square = document.createElement('img');
-                      square.setAttribute('src', '');
+                      square.setAttribute('src', 'https://www.pawbe.com/images/Blank.png');
+                      square.setAttribute('id', String(i).concat(String(j)));
+                      mytd.appendChild(square); 
+                      mytr.appendChild(mytd); 
+              }
+               else if(maze[i][j] == "4"){
+                   var mytd = document.createElement('td');
+                      var square = document.createElement('img');
+                      square.setAttribute('src', 'http://got-djent.com/kidman/img/okubo.png');
                       square.setAttribute('id', String(i).concat(String(j)));
                       mytd.appendChild(square); 
                       mytr.appendChild(mytd); 
@@ -141,12 +169,13 @@ document.addEventListener("keydown",move);
  async function move(e){
 	e = e || window.event;
     keycode = e.which || e.keyCode;
+    g_move();
     switch(keycode){
         
         case 65: //left
-			while(maze[pos.y][pos.x-1] == 0 || maze[pos.y][pos.x-1] == 2 || pos.x == 0){
+			while(maze[pos.y][pos.x-1] != 1 || pos.x == 0){
 				if(pos.x > 0){
-				  if(maze[pos.y][pos.x-1] == 0 || maze[pos.y][pos.x-1] == 2){
+				  if(maze[pos.y][pos.x-1] != 1){
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y][pos.x-1] = 5;
 					pos.x -= 1;
@@ -165,9 +194,9 @@ document.addEventListener("keydown",move);
 			break;
         
         case 87: //up
-			while(maze[pos.y-1][pos.x] == 0 || maze[pos.y-1][pos.x] == 2 || pos.y == 0){
+			while(pos.y == 0 || maze[pos.y-1][pos.x] != 1){
 				if(pos.y > 0){
-				  if(maze[pos.y-1][pos.x] == 0 || maze[pos.y-1][pos.x] == 2){
+				  if(maze[pos.y-1][pos.x] != 1){
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y-1][pos.x] = 5;
 					pos.y -= 1;
@@ -180,15 +209,15 @@ document.addEventListener("keydown",move);
 				  maze[pos.y][pos.x] = 5;
 				  await sleep(150);
 				}
-			  mydiv.parentNode.removeChild(mydiv);
-			  maze_generate();
+			 	  mydiv.parentNode.removeChild(mydiv);
+			  	  maze_generate();
 			}
           break;
         
         case 68: //right
-			while(maze[pos.y][pos.x+1] == 0 || maze[pos.y][pos.x+1] == 2 || pos.x == 31){
+			while(maze[pos.y][pos.x+1] != 1 || pos.x == 31){
 				if(pos.x < 31){
-				  if(maze[pos.y][pos.x+1] == 0 || maze[pos.y][pos.x+1] == 2){
+				  if(maze[pos.y][pos.x+1] != 1){
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y][pos.x+1] = 5;		
 					pos.x += 1;
@@ -210,9 +239,9 @@ document.addEventListener("keydown",move);
           break;
         
         case 83: //down
-			while(maze[pos.y+1][pos.x] == 0 || maze[pos.y+1][pos.x] == 2 || pos.y == 13){
+			while(maze[pos.y+1][pos.x] != 1 || pos.y == 13){
 				if(pos.y < 13){
-				  if(maze[pos.y+1][pos.x] == 0 || maze[pos.y+1][pos.x] == 2){
+				  if(maze[pos.y+1][pos.x] != 1){
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y+1][pos.x] = 5;
 					pos.y += 1;
@@ -224,8 +253,6 @@ document.addEventListener("keydown",move);
 				  pos.y = 0;
 				  maze[pos.y][pos.x] = 5;
 				  await sleep(150);
-				  mydiv.parentNode.removeChild(mydiv);
-          		  maze_generate();
 				}
 			
 	          mydiv.parentNode.removeChild(mydiv);
@@ -235,6 +262,3 @@ document.addEventListener("keydown",move);
 	}
 }
 
-function sleep (time) {
-  return new Promise((resolve) => setTimeout(resolve, time));
-}
