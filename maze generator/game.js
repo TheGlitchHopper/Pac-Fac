@@ -112,10 +112,18 @@ function maze_generate(){
                       mytd.appendChild(pacman); 
                       mytr.appendChild(mytd); 
               }
-              else{
+              else if(maze[i][j] == "0"){
                    var mytd = document.createElement('td');
                       var square = document.createElement('img');
                       square.setAttribute('src', 'http://www.kidspot.com.au/bundles/nlmkidspot/images/social_pinterest.png');
+                      square.setAttribute('id', String(i).concat(String(j)));
+                      mytd.appendChild(square); 
+                      mytr.appendChild(mytd); 
+              }
+              else if(maze[i][j] == "2"){
+                   var mytd = document.createElement('td');
+                      var square = document.createElement('img');
+                      square.setAttribute('src', '');
                       square.setAttribute('id', String(i).concat(String(j)));
                       mytd.appendChild(square); 
                       mytr.appendChild(mytd); 
@@ -128,29 +136,28 @@ function maze_generate(){
 
 window.onload = maze_generate;
 
-document.addEventListener("keyup",move);
-
+document.addEventListener("keydown",move);
 
  async function move(e){
-    e = e || window.event;
+	e = e || window.event;
     keycode = e.which || e.keyCode;
     switch(keycode){
         
         case 65: //left
-			while(maze[pos.y][pos.x-1] == 0 || pos.x == 0){
+			while(maze[pos.y][pos.x-1] == 0 || maze[pos.y][pos.x-1] == 2 || pos.x == 0){
 				if(pos.x > 0){
-				  if(maze[pos.y][pos.x-1] == 0){
-					maze[pos.y][pos.x] = 0;
+				  if(maze[pos.y][pos.x-1] == 0 || maze[pos.y][pos.x-1] == 2){
+					maze[pos.y][pos.x] = 2;
 					maze[pos.y][pos.x-1] = 5;
 					pos.x -= 1;
-					await sleep(50);
+					await sleep(150);
 				  }
 				}
 				else if(pos.x == 0){
-				  maze[pos.y][pos.x] = 0;
+				  maze[pos.y][pos.x] = 2;
 				  pos.x = 31;
 				  maze[pos.y][pos.x] = 5;
-				  await sleep(50);
+				  await sleep(150);
 				}
 				  mydiv.parentNode.removeChild(mydiv);
 				  maze_generate();
@@ -158,20 +165,20 @@ document.addEventListener("keyup",move);
 			break;
         
         case 87: //up
-			while(maze[pos.y-1][pos.x] == 0 || pos.y == 0){
+			while(maze[pos.y-1][pos.x] == 0 || maze[pos.y-1][pos.x] == 2 || pos.y == 0){
 				if(pos.y > 0){
-				  if(maze[pos.y-1][pos.x] == 0){
-					maze[pos.y][pos.x] = 0;
+				  if(maze[pos.y-1][pos.x] == 0 || maze[pos.y-1][pos.x] == 2){
+					maze[pos.y][pos.x] = 2;
 					maze[pos.y-1][pos.x] = 5;
 					pos.y -= 1;
-					await sleep(50);
+					await sleep(150);
 				  }
 				}
 				else if(pos.y == 0){
-				  maze[pos.y][pos.x] = 0;
+				  maze[pos.y][pos.x] = 2;
 				  pos.y = 13;
 				  maze[pos.y][pos.x] = 5;
-				  await sleep(50);
+				  await sleep(150);
 				}
 			  mydiv.parentNode.removeChild(mydiv);
 			  maze_generate();
@@ -179,22 +186,22 @@ document.addEventListener("keyup",move);
           break;
         
         case 68: //right
-			while(maze[pos.y][pos.x+1] == 0 || pos.x == 31){
+			while(maze[pos.y][pos.x+1] == 0 || maze[pos.y][pos.x+1] == 2 || pos.x == 31){
 				if(pos.x < 31){
-				  if(maze[pos.y][pos.x+1] == 0){
-					maze[pos.y][pos.x] = 0;
+				  if(maze[pos.y][pos.x+1] == 0 || maze[pos.y][pos.x+1] == 2){
+					maze[pos.y][pos.x] = 2;
 					maze[pos.y][pos.x+1] = 5;		
 					pos.x += 1;
-					await sleep(50);
+					await sleep(150);
 				  }
 			}
 		
 		
 				else if(pos.x == 31){
-				  maze[pos.y][pos.x] = 0;
+				  maze[pos.y][pos.x] = 2;
 				  pos.x = 0;
 				  maze[pos.y][pos.x] = 5;
-				  await sleep(50);
+				  await sleep(150);
 				}
 			  mydiv.parentNode.removeChild(mydiv);
 			  maze_generate();
@@ -203,20 +210,20 @@ document.addEventListener("keyup",move);
           break;
         
         case 83: //down
-			while(maze[pos.y+1][pos.x] == 0 || pos.y == 13){
+			while(maze[pos.y+1][pos.x] == 0 || maze[pos.y+1][pos.x] == 2 || pos.y == 13){
 				if(pos.y < 13){
-				  if(maze[pos.y+1][pos.x] == 0){
-					maze[pos.y][pos.x] = 0;
+				  if(maze[pos.y+1][pos.x] == 0 || maze[pos.y+1][pos.x] == 2){
+					maze[pos.y][pos.x] = 2;
 					maze[pos.y+1][pos.x] = 5;
 					pos.y += 1;
-					await sleep(50);
+					await sleep(150);
 				  }
 				}
 				if(pos.y == 13){
-				  maze[pos.y][pos.x] = 0;
+				  maze[pos.y][pos.x] = 2;
 				  pos.y = 0;
 				  maze[pos.y][pos.x] = 5;
-				  await sleep(50);
+				  await sleep(150);
 				  mydiv.parentNode.removeChild(mydiv);
           		  maze_generate();
 				}
