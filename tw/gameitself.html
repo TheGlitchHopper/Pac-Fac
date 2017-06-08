@@ -1,17 +1,24 @@
+<!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="styles.css">
+<head>
+	<link rel="stylesheet" href="styles.css">
+ 	<script type="text/javascript" src="game.js"></script>
+</head>
 <body>
-<!--<img id="avatar" onclick="change()" src="media/back.png">-->
-<script type="text/javascript" src="game.js"></script>
-<!--<script>
-window.onload = function change()
-{   var avatar = localStorage.getItem("avatar");
-    image = document.getElementById('avatar');
-	image.src = avatar;                              
-}-->
+<audio autoplay="true" loop="true">
+	<source src="media/ingame.mp3" type="audio/mpeg">
+</audio>
+<img id="avatar" style="position:fixed;right:54%;margin-top:15%" src=""/>
+<div style="position:fixed;bottom:2%;width:100%"><a href="gameover.html"><button class="backbutton" onclick="setscore()">- Give up -</button></a></div>
 <script>
-function stopaudio(){
-	audioCh1: document.createElement("audio");
+var img = document.getElementById("avatar");
+img.setAttribute('src',localStorage.getItem("avatar"));
+img.setAttribute('width','240px');
+img.setAttribute('height','240px');
+function setscore()
+{
+	var num = Math.floor(Math.random()*(200-10+1)+10);
+	localStorage.setItem("score",String(num));
 }
 </script>
 </body>
