@@ -106,6 +106,8 @@ async function g_move(ghost){
 		maze[ghost.y][ghost.x-1] = 4;
 		ghost.x -= 1;
 		await sleep(600);
+					if (pos.x==0)
+						pos.x=32;
 		console.log(maze[ghost.y][ghost.x-1]);}
 		break;
 		case 2://right
@@ -114,6 +116,8 @@ async function g_move(ghost){
 		maze[ghost.y][ghost.x+1] = 4;
 		ghost.x += 1;
 		await sleep(600);
+					if (pos.x==32)
+						pos.x=0;
 		console.log(maze[ghost.y][ghost.x+1]);}
 		break;
 		case 3://up
@@ -122,6 +126,8 @@ async function g_move(ghost){
 		maze[ghost.y-1][ghost.x] = 4;
 		ghost.y -= 1;
 		await sleep(600);
+			if (pos.y==0)
+				pos.y=13;
 		console.log(maze[ghost.y-1][ghost.x]);}
 		break;
 		case 4://down
@@ -130,6 +136,8 @@ async function g_move(ghost){
 		maze[ghost.y+1][ghost.x] = 4;
 		ghost.y += 1;
 		await sleep(600);
+					if (pos.y==13)
+						pos.y=0;
 		console.log(maze[ghost.y][ghost.x-1]);}
 		break;
 		default:
@@ -141,24 +149,32 @@ async function g_move(ghost){
 		maze[ghost.y][ghost.x-1] = 4;
 		ghost.x -= 1;
 		await sleep(600);
+				if (pos.x==0)
+					pos.x=32;
 		console.log(maze[ghost.y][ghost.x-1]);}
 		if(maze[ghost.y][ghost.x+1] == 0){
 		maze[ghost.y][ghost.x] = 0;
 		maze[ghost.y][ghost.x+1] = 4;
 		ghost.x += 1;
 		await sleep(600);
+			if (pos.x==32)
+					pos.x=0;
 		console.log(maze[ghost.y][ghost.x+1]);}
 		if(maze[ghost.y-1][ghost.x] == 0){
 		maze[ghost.y][ghost.x] = 0;
 		maze[ghost.y-1][ghost.x] = 4;
 		ghost.y -= 1;
 		await sleep(600);
+			if (pos.y==0)
+				pos.y=13;
 		console.log(maze[ghost.y-1][ghost.x]);}
 		if(maze[ghost.y+1][ghost.x] == 0){
 		maze[ghost.y][ghost.x] = 0;
 		maze[ghost.y+1][ghost.x] = 4;
 		ghost.y += 1;
 		await sleep(600);
+			if (pos.y==13)
+				pos.y=0;
 		console.log(maze[ghost.y][ghost.x-1]);}
 	}
 	break;}
