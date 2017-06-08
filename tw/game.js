@@ -27,7 +27,7 @@ var maze = [
 [1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1],
 [1,1,1,0,1,1,1,0,0,0,0,0,0,0,0,0,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1],
 [0,0,0,0,1,1,1,0,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0],
-[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,4,0,0,0,0,0,1,1,1,1],
+[1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,6,0,0,0,0,0,1,1,1,1],
 [1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 ];
 var maze3 = [
@@ -115,8 +115,14 @@ async function g_move(ghost){
 	switch (rand){
 		case 1://left
 			while(maze[ghost.y][ghost.x-1] == 0 && rand ==1){
-				maze[ghost.y][ghost.x] = 0;
-				maze[ghost.y][ghost.x-1] = 4;
+				if(maze[ghost.y][ghost.x] == 6){
+					maze[ghost.y][ghost.x] = 0;
+					maze[ghost.y][ghost.x-1] = 6;
+				}
+				else{
+					maze[ghost.y][ghost.x] = 0;
+					maze[ghost.y][ghost.x-1] = 4
+				}
 				ghost.x -= 1;
 				await sleep(150);
 			}
@@ -124,8 +130,14 @@ async function g_move(ghost){
 
 		case 2://right
 			while(maze[ghost.y][ghost.x+1] == 0 && rand ==2){
-				maze[ghost.y][ghost.x] = 0;
-				maze[ghost.y][ghost.x+1] = 4;
+				if(maze[ghost.y][ghost.x] == 6){
+					maze[ghost.y][ghost.x] = 0;
+					maze[ghost.y][ghost.x+1] = 6;
+				}
+				else{
+					maze[ghost.y][ghost.x] = 0;
+					maze[ghost.y][ghost.x+1] = 4;
+				}
 				ghost.x += 1;
 				await sleep(150);
 			}
@@ -133,8 +145,14 @@ async function g_move(ghost){
 
 		case 3://up
 			while(maze[ghost.y-1][ghost.x] == 0 && rand ==3){
-				maze[ghost.y][ghost.x] = 0;
-				maze[ghost.y-1][ghost.x] = 4;
+				if(maze[ghost.y][ghost.x] == 6){
+					maze[ghost.y][ghost.x] = 0;
+					maze[ghost.y-1][ghost.x] = 6;
+				}
+				else{
+					maze[ghost.y][ghost.x] = 0;
+					maze[ghost.y-1][ghost.x] = 4;
+				}
 				ghost.y -= 1;
 				await sleep(150);
 			}
@@ -142,8 +160,14 @@ async function g_move(ghost){
 		
 		case 4://down
 			while(maze[ghost.y+1][ghost.x] == 0 && rand == 4){
-				maze[ghost.y][ghost.x] = 0;
-				maze[ghost.y+1][ghost.x] = 4;
+				if(maze[ghost.y][ghost.x] == 6){
+					maze[ghost.y][ghost.x] = 0;
+					maze[ghost.y+1][ghost.x] = 6;
+				}
+				else{
+					maze[ghost.y][ghost.x] = 0;
+					maze[ghost.y+1][ghost.x] = 4;
+				}
 				ghost.y += 1;
 				await sleep(150);
 			}
@@ -206,10 +230,19 @@ function maze_generate(){
                       mytd.appendChild(square); 
                       mytr.appendChild(mytd); 
               }
+              else if(maze[i][j] == "6"){
+                   var mytd = document.createElement('td');
+                      var square = document.createElement('img');
+                      square.setAttribute('src', 'media/g3.gif');
+                      square.setAttribute('id', String(i).concat(String(j)));
+                      square.setAttribute('width', '45px');
+                      mytd.appendChild(square); 
+                      mytr.appendChild(mytd); 
+              }
   		}
       mydiv.appendChild(mytr);
   	}
-    document.body.appendChild(mydiv)
+    document.body.appendChild(mydiv);
 }
 
 window.onload = maze_generate;
@@ -227,15 +260,17 @@ document.addEventListener("keydown",move);
     switch(keycode){
         
         case 65: //left
-			while((maze[pos.y][pos.x-1] == 0 || maze[pos.y][pos.x-1] == 2 || maze[pos.y][pos.x-1] == 4)&& keycode == 65){
+			while((maze[pos.y][pos.x-1] == 0 || maze[pos.y][pos.x-1] == 2 || maze[pos.y][pos.x-1] == 4 || maze[pos.y][pos.x-1] == 6)&& keycode == 65){
 				  if(maze[pos.y][pos.x-1] != 1){
 				  	if(maze[pos.y][pos.x-1] == 0)
 				  		count+=1;
-				  	else if(maze[pos.y][pos.x-1] == 4)
+				  	else if(maze[pos.y][pos.x-1] == 4 || maze[pos.y][pos.x-1] == 6)
 				  		window.location.href = "gameover.html";
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y][pos.x-1] = 5;
 					pos.x -= 1;
+					if (pos.x==0)
+						pos.x=32;
 				  }
     			  if(count == 164) alert("We have a winner!");
 				  mydiv.parentNode.removeChild(mydiv);
@@ -245,16 +280,18 @@ document.addEventListener("keydown",move);
 			break;
         
         case 87: //up
-			while((maze[pos.y-1][pos.x] == 0 || maze[pos.y-1][pos.x] == 2 || maze[pos.y-1][pos.x] == 4)&& keycode == 87){
+			while((maze[pos.y-1][pos.x] == 0 || maze[pos.y-1][pos.x] == 2 || maze[pos.y-1][pos.x] == 4 || maze[pos.y-1][pos.x] == 6)&& keycode == 87){
 				
 				  if(maze[pos.y-1][pos.x] != 1){
 				  	if(maze[pos.y-1][pos.x] == 0)
 				  		count+=1;
-				  	else if(maze[pos.y-1][pos.x] == 4)
+				  	else if(maze[pos.y-1][pos.x] == 4 || maze[pos.y-1][pos.x] == 6)
 				  		window.location.href = "gameover.html";
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y-1][pos.x] = 5;
 					pos.y -= 1;
+					if (pos.y==0)
+						pos.y=13;
 				  }
 				  if(count == 164) alert("We have a winner!");
 			 	  mydiv.parentNode.removeChild(mydiv);
@@ -264,16 +301,18 @@ document.addEventListener("keydown",move);
           break;
         
         case 68: //right
-			while((maze[pos.y][pos.x+1] == 0 || maze[pos.y][pos.x+1] == 2 || maze[pos.y][pos.x+1] == 4)&& keycode == 68){
+			while((maze[pos.y][pos.x+1] == 0 || maze[pos.y][pos.x+1] == 2 || maze[pos.y][pos.x+1] == 4 || maze[pos.y][pos.x+1] == 6)&& keycode == 68){
 				
 				  if(maze[pos.y][pos.x+1] != 1){
 				  	if(maze[pos.y][pos.x+1] == 0)
 				  		count+=1;
-				  	else if(maze[pos.y][pos.x+1] == 4)
+				  	else if(maze[pos.y][pos.x+1] == 4 || maze[pos.y][pos.x+1] == 6)
 				  		window.location.href = "gameover.html";
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y][pos.x+1] = 5;		
 					pos.x += 1;
+					if (pos.x==32)
+						pos.x=0;
 				  }
 			      if(count == 164) alert("We have a winner!");
 				  mydiv.parentNode.removeChild(mydiv);
@@ -284,16 +323,18 @@ document.addEventListener("keydown",move);
           break;
         
         case 83: //down
-			while((maze[pos.y+1][pos.x] == 0 || maze[pos.y+1][pos.x] == 2 || maze[pos.y+1][pos.x] == 4)&& keycode == 83){
+			while((maze[pos.y+1][pos.x] == 0 || maze[pos.y+1][pos.x] == 2 || maze[pos.y+1][pos.x] == 4 || maze[pos.y+1][pos.x] == 6)&& keycode == 83){
 				
 				  if(maze[pos.y+1][pos.x] != 1){
 				  	if(maze[pos.y+1][pos.x] == 0)
 				  		count+=1;
-				  	else if(maze[pos.y+1][pos.x] == 4)
+				  	else if(maze[pos.y+1][pos.x] == 4 || maze[pos.y+1][pos.x] == 6)
 				  		window.location.href = "gameover.html";
 					maze[pos.y][pos.x] = 2;
 					maze[pos.y+1][pos.x] = 5;
 					pos.y += 1;
+					if (pos.y==13)
+						pos.y=0;
 				  }
 				  if(count == 164) alert("We have a winner!");
 		          mydiv.parentNode.removeChild(mydiv);
