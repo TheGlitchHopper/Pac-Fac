@@ -6,7 +6,7 @@
 </audio>
 <div><img class="charselect1" src="media/charselect1.png"/></div>
 <div>
-	<a href="gameover.html"><img class="avatarselect" onclick="w1fct()" src="media/w1.png"/></a>
+	<a href="gameitself.html"><img class="avatarselect" onclick="w1fct()" src="media/w1.png"/></a>
 	<a href="gameitself.html"><img class="avatarselect" onclick="w2fct()" src="media/w2.png"/></a>
 	<a href="gameitself.html"><img class="avatarselect" onclick="w3fct()" src="media/w3.png"/></a>
 	<a href="gameitself.html"><img class="avatarselect" onclick="w4fct()" src="media/w4.png"/></a>
@@ -23,12 +23,12 @@
 <!--<div><img src="http://graph.facebook.com/100010138862102/picture?type=square"/></div>-->
 <a href="temporary.html"><img src="media/back.png" style="width:5%;margin-left:3%"></a>
 <script>
-function w1fct() {var avatar = "media/w1.png";localStorage.setItem("avatar", avatar);}
+function w1fct() {var avatar = "media/w1.png";localStorage.setItem("avatar", avatar);/*localStorage.setItem("highscore","30");*/}
 function w2fct() {var avatar = "media/w2.png";localStorage.setItem("avatar", avatar);}
 function w3fct() {var avatar = "media/w3.png";localStorage.setItem("avatar", avatar);}
 function w4fct() {var avatar = "media/w4.png";localStorage.setItem("avatar", avatar);}
 function w5fct() {var avatar = "media/w5.png";localStorage.setItem("avatar", avatar);}
-function fbfct() {var avatar = "http://graph.facebook.com/" + document.getElementById("text").value + "/picture?type=square";localStorage.setItem("avatar", avatar);}
+function fbfct() {var avatar = "http://graph.facebook.com/" + document.getElementById("text").value + "/picture?type=large";localStorage.setItem("avatar", avatar);}
 </script>
 </body>
 </html>
