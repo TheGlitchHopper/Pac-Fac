@@ -242,6 +242,9 @@ document.addEventListener("keydown",move);
 					maze[pos.y][pos.x-1] = 5;
 					pos.x -= 1;
 					await sleep(150);
+				
+					if (pos.x==0)
+						pos.x=32;
 				  }
     			  if(count == 164) alert("We have a winner!");
 				  mydiv.parentNode.removeChild(mydiv);
@@ -259,6 +262,8 @@ document.addEventListener("keydown",move);
 					maze[pos.y-1][pos.x] = 5;
 					pos.y -= 1;
 					await sleep(150);
+					if (pos.y==0)
+						pos.y=13;
 				  }
 				  if(count == 164) alert("We have a winner!");
 			 	  mydiv.parentNode.removeChild(mydiv);
@@ -276,6 +281,9 @@ document.addEventListener("keydown",move);
 					maze[pos.y][pos.x+1] = 5;		
 					pos.x += 1;
 					await sleep(150);
+					  
+					if (pos.x==32)
+						pos.x=0;
 				  }
 			      if(count == 164) alert("We have a winner!");
 				  mydiv.parentNode.removeChild(mydiv);
@@ -294,6 +302,9 @@ document.addEventListener("keydown",move);
 					maze[pos.y+1][pos.x] = 5;
 					pos.y += 1;
 					await sleep(150);
+					  
+					if (pos.y==13)
+						pos.y=0;
 				  }
 				  if(count == 164) alert("We have a winner!");
 		          mydiv.parentNode.removeChild(mydiv);
